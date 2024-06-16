@@ -31,7 +31,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"fullname\": \"Dummy User\",\n    \"email\": \"dummy.user@test.com\",\n    \"password\": \"p455word\"\n}",
+							"raw": "{\n    \"fullname\": \"Dummy User\",\n    \"email\": \"dummy.user@test.com\",\n    \"password\": \"\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -72,7 +72,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"dummy.user@test.com\",\n    \"password\": \"p455word\"\n}",
+							"raw": "{\n    \"email\": \"dummy.user@test.com\",\n    \"password\": \"\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -164,7 +164,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"oldPassword\": \"p455word\",\n    \"newPassword\": \"test123\"\n}",
+							"raw": "{\n    \"oldPassword\": \"\",\n    \"newPassword\": \"\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"

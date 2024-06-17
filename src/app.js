@@ -4,16 +4,16 @@ import dotenv from "dotenv";
 import connection from "./config/database.js";
 import apiRoute from "./routes/api.js";
 import { ReasonPhrases, StatusCodes } from "http-status-codes";
-import { initRabbitMQ, channel } from "./config/mq.js";
-import bodyParser from "body-parser";
+import { initRabbitMQ } from "./config/mq.js";
+import cors from "cors";
 
 const env = dotenv.config().parsed;
 const app = express();
 
-// app.use(express.json());
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("combined"));
-app.use(bodyParser.json({ limit: "50mb" }));
+app.use(cors());
 
 app.use("/", apiRoute);
 

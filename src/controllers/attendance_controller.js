@@ -227,29 +227,24 @@ class AttendanceController {
         1
       );
 
-      if (!dayjs(req.body.from).isValid()) {
+      if (!dayjs(req.query.from).isValid()) {
         throw { code: StatusCodes.BAD_REQUEST, message: "invalid from" };
       }
-      if (!dayjs(req.body.to).isValid()) {
+      if (!dayjs(req.query.to).isValid()) {
         throw { code: StatusCodes.BAD_REQUEST, message: "invalid to" };
       }
-      if (req.body.from > req.body.to) {
-        throw { code: StatusCodes.BAD_REQUEST, message: "invalid param" };
+      if (req.query.from > req.query.to) {
+        throw { code: StatusCodes.BAD_REQUEST, message: "invalid params" };
       }
-
-      console.log(
-        firstDateOfCurrentMonth.setHours(0, 0, 0, 0),
-        currentDate.setHours(0, 0, 0, 0)
-      );
-      console.log(dayjs(req.body.from).isValid(), dayjs(req.body.to).isValid());
+      
       const attendances = await Attendance.find({
         userId: req.jwt.id,
         checkInDate: {
-          $gte: req.body.from
-            ? new Date(req.body.from).setHours(0, 0, 0, 0)
+          $gte: req.query.from
+            ? new Date(req.query.from).setHours(0, 0, 0, 0)
             : firstDateOfCurrentMonth.setHours(0, 0, 0, 0),
-          $lte: req.body.to
-            ? new Date(req.body.to).setHours(0, 0, 0, 0)
+          $lte: req.query.to
+            ? new Date(req.query.to).setHours(0, 0, 0, 0)
             : currentDate.setHours(0, 0, 0, 0),
         },
       })
@@ -282,8 +277,8 @@ class AttendanceController {
           list: attendanceList,
           totalWorkMinutes,
           totalWorkDuration,
-          from: req.body.from ? req.body.from : firstDateOfCurrentMonth,
-          to: req.body.to ? req.body.to : currentDate,
+          from: req.query.from ? req.query.from : firstDateOfCurrentMonth,
+          to: req.query.to ? req.query.to : currentDate,
         },
       });
     } catch (error) {

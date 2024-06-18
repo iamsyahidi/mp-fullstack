@@ -491,6 +491,82 @@
 			]
 		},
 		{
+			"name": "Upload",
+			"item": [
+				{
+					"name": "Upload",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/macbookpro/Downloads/mark-chan-od3F8UT0YAI-unsplash.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{local}}/uploads",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"uploads"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Upload",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/uploads/:filename",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"uploads",
+								":filename"
+							],
+							"variable": [
+								{
+									"key": "filename",
+									"value": "1718690825075.jpeg"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "New Request",
 			"request": {
 				"method": "GET",
